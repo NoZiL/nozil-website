@@ -1,3 +1,4 @@
+import { Button } from "@/components/button";
 import { Container } from "@/components/container";
 import { GitHubIcon, LinkedInIcon } from "@/components/social-icons";
 import Link from "next/link";
@@ -41,6 +42,14 @@ export default function Home() {
             />
           </div>
         </div>
+      </Container>
+      <Container className="mt-4">
+        <Button
+          variant="secondary"
+          href="https://docs.google.com/document/d/1Qjl9Y3iRAs3d7-8gb8GQJpfPQ7Qaj3u7BFsj1ohJ1js/export?format=pdf"
+        >
+          Get my resume
+        </Button>
       </Container>
     </>
   );
