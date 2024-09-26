@@ -147,7 +147,7 @@ function Turnstile() {
       ></Script>
       <div
         className={turnstileClass}
-        data-sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
+        data-sitekey="0x4AAAAAAAkefG8I1oCOwV3T"
         data-size="flexible"
         data-callback="javascriptCallback"
       ></div>
