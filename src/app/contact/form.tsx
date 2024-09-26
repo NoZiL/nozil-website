@@ -1,12 +1,12 @@
 "use client";
 
-import { sendContactForm, SendContactFormState } from "@/app/actions";
 import { Button } from "@/components/button";
 import { Field, Input, Label, Textarea } from "@headlessui/react";
 import clsx from "clsx";
 import Script from "next/script";
 import { useEffect } from "react";
 import { useFormState, useFormStatus } from "react-dom";
+import { sendContactForm, SendContactFormState } from "./actions";
 
 const turnstileClass = "cf-turnstile";
 

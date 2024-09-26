@@ -18,6 +18,7 @@ export async function sendContactForm(
       lastName: formData.get("last-name"),
       email: formData.get("email"),
       message: formData.get("message"),
+      createdAt: Date.now(),
     };
 
     if (prevState.success >= 3) {
@@ -32,7 +33,10 @@ export async function sendContactForm(
 
     const myKv = getRequestContext().env.CONTACT;
 
-    await myKv.put(rawFormData.email, JSON.stringify(rawFormData));
+    await myKv.put(
+      rawFormData.email + rawFormData.createdAt,
+      JSON.stringify(rawFormData)
+    );
 
     return { success: prevState.success + 1, error: undefined };
   } catch (e) {
@@ -50,7 +54,7 @@ async function verifyTurnstile(cfTurnstileResponse: FormDataEntryValue | null) {
   const ip = headers().get("X-Forwarded-For");
 
   if (!ip) {
-    throw new Error("Can't verify ip.");
+    throw new Error("Can’t verify ip.");
   }
 
   if (!process.env.NEXT_PRIVATE_TURNSTILE_SECRET_KEY) {
