@@ -118,8 +118,7 @@ function Submit() {
 
   useEffect(() => {
     if (pending) {
-      // @ts-ignore
-      window.turnstile.reset(".cf-turnstile");
+      (window as any).turnstile.reset(".cf-turnstile");
     }
   }, [pending]);
 
