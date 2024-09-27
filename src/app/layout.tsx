@@ -6,8 +6,7 @@ import "@/styles/globals.css";
 export const metadata: Metadata = {
   title: {
     template: "%s - Nicolas Zilli",
-    default:
-      "Nicolas Zilli - Software designer, founder, and amateur astronaut",
+    default: "Nicolas Zilli - Experienced Software Developer",
   },
   description:
     "I’m Nico an Experienced Software Developer, specialist in React & React Native. I’m currently doing freelancing work for Paris based clients..",
