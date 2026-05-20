@@ -1,0 +1,25 @@
+---
+import Base from "@/layouts/Base.astro";
+import { ContactForm } from "@/components/ContactForm";
+---
+
+<Base title="Contact" description="Get in touch with Nicolas Zilli — available for freelance contracts and staff/founding engineer roles.">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
+    <div class="max-w-xl">
+      <h1 class="text-3xl sm:text-4xl font-bold text-zinc-900 dark:text-zinc-100">Let's talk</h1>
+      <p class="mt-3 text-zinc-500 dark:text-zinc-400 leading-relaxed">
+        Whether you have a freelance project, a founding engineer opportunity, or just want to connect — drop me a message.
+      </p>
+      <div class="mt-2 flex flex-col gap-1 text-sm text-zinc-500 dark:text-zinc-400">
+        <span>Based in Lyon, France · Remote-friendly</span>
+        <a href="mailto:m.nicolas.zilli@gmail.com" class="text-teal-600 dark:text-teal-400 hover:underline">
+          m.nicolas.zilli@gmail.com
+        </a>
+      </div>
+
+      <div class="mt-10">
+        <ContactForm client:load />
+      </div>
+    </div>
+  </div>
+</Base>

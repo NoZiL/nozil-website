@@ -1,0 +1,86 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Nicolas Zilli — Senior Mobile Engineer, React Native specialist with 10+ years. Lyon-based, remote-friendly. Open to freelance and founding engineer roles." } = Astro.props;
+const siteTitle = title === "Nicolas Zilli" ? title : `${title} — Nicolas Zilli`;
+---
+
+<!doctype html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{siteTitle}</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta property="og:title" content={siteTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta name="google-site-verification" content="_Iya2lnPaFQyb2W708vuP6iPYiFtrWq7P9Ygsb_01pI" />
+    <script is:inline>
+      const stored = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (stored === "dark" || (!stored && prefersDark)) {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
+  </head>
+  <body class="min-h-full flex flex-col">
+    <header class="sticky top-0 z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur border-b border-zinc-200 dark:border-zinc-800">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+        <a href="/" class="text-sm font-semibold text-zinc-900 dark:text-zinc-100 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">
+          Nicolas Zilli
+        </a>
+        <nav class="flex items-center gap-6">
+          <a href="/experience" class="text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">
+            Experience
+          </a>
+          <a href="/contact" class="text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">
+            Contact
+          </a>
+          <button
+            id="theme-toggle"
+            aria-label="Toggle dark mode"
+            class="p-1.5 rounded-md text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+          >
+            <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+            <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="flex-1">
+      <slot />
+    </main>
+
+    <footer class="border-t border-zinc-200 dark:border-zinc-800 mt-16">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-sm text-zinc-500 dark:text-zinc-400">
+          © {new Date().getFullYear()} Nicolas Zilli
+        </p>
+        <div class="flex items-center gap-5 text-sm text-zinc-500 dark:text-zinc-400">
+          <a href="https://github.com/nozil" target="_blank" rel="noopener noreferrer" class="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">GitHub</a>
+          <a href="https://www.linkedin.com/in/nicolaszilli/" target="_blank" rel="noopener noreferrer" class="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">LinkedIn</a>
+          <a href="mailto:m.nicolas.zilli@gmail.com" class="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">Email</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("theme-toggle")?.addEventListener("click", () => {
+        const isDark = document.documentElement.classList.toggle("dark");
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+      });
+    </script>
+  </body>
+</html>
